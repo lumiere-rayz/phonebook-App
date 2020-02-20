@@ -1,0 +1,60 @@
+<form [formGroup]="contactForm">
+
+    <div class="form-group">
+        <label>firstname</label>
+        <input class="form-control" formControlName="firstname">
+        <div class="err" *ngIf="contactForm.controls['firstname'].invalid && contactForm.controls['firstname'].dirty">
+            <div *ngIf="contactForm.controls['firstname'].errors.required">Firstname is Mandatory</div>
+            <div *ngIf="contactForm.controls['firstname'].errors.minlength">input atleast 3 letters</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>lastname</label>
+        <input class="form-control" formControlName="lastname">
+    </div>
+    <div class="form-group">
+        <label>Gender</label>
+        <label><input type="radio" name="gender" value="Male" formControlName="gender">Male</label>
+        <label><input type="radio" name="gender" value="Female" formControlName="gender">Female</label>
+    </div>
+
+    <div class="form-group">
+        <label>email</label>
+        <input class="form-control" formControlName="email">
+        <div class="err" *ngIf="contactForm.controls['email'].invalid && contactForm.controls['email'].dirty">
+            <div *ngIf="contactForm.controls['email'].errors.required">email is Mandatory</div>
+            <div *ngIf="contactForm.controls['email'].errors.email">not a valid email</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Phone</label>
+        <input class="form-control" formControlName="phone">
+        <div class="err" *ngIf="contactForm.controls['phone'].invalid && contactForm.controls['phone'].dirty">
+            <div *ngIf="contactForm.controls['phone'].errors.required">phone number is Mandatory</div>
+            <div *ngIf="contactForm.controls['phone'].errors.pattern">input 10 to 12 digits phone</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Date of Birth</label>
+        <input class="form-control" formControlName="dob">
+    </div>
+    <div class="form-group">
+        <label>City</label>
+        <input class="form-control" formControlName="city">
+    </div>
+    <div class="form-group">
+        <label>State</label>
+        <input class="form-control" formControlName="state">
+    </div>
+    <div class="form-group">
+        <label>Country</label>
+        <input class="form-control" formControlName="country">
+    </div>
+    <div class="form-group">
+        <label>picture (URL)</label>
+        <input class="form-control" formControlName="picture">
+    </div>
+    <button class="btn btn-{{ contactForm.valid ? 'primary' : 'danger'}}" [disabled]='contactForm.invalid' (click)="saveChanges()">Save Changes</button>
+
+</form>
